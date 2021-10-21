@@ -65,10 +65,11 @@ jobs:
 ### Test package & Gather Code Coverage using codecov.io
 Replace the `{YOUR_PACKAGE_NAME}` with the name of your package. For example if the name of the package is `gacalc`, then replace the fragment `{YOUR_PACKAGE_NAME}PackageTests` with `GacalcPackageTests`. 
 
-Note: Even though, the name of the package is all lowercased, the replaced name starts with uppercased first letter!
-
-When this action is executed for a pull request, the codevcov bot will add a comment with a new code coverage statistics:
-<img src="https://user-images.githubusercontent.com/6362174/138331737-c70b6561-fcb9-42f0-be03-f33cc7ca6f22.png">
+```
+Note: Although the name of the package is all lowercased, the replaced name starts with uppercased first letter!
+You can double check the name locally. Run the `swift build` command in the Terminal. Then open the `.build` folder: `open .build`.
+Inside the `.build/debug` folder you will find either `{YOUR_PACKAGE_NAME}PackageTests.product` or `{YOUR_PACKAGE_NAME}PackageTests.xctest` file.
+```
 
 ```yaml
 name: Test Package
@@ -109,6 +110,9 @@ jobs:
           files: ./coverage_report.lcov
           verbose: true
 ```
+
+When this action is executed for a pull request, the codevcov bot will add a comment with a new code coverage statistics:
+<img src="https://user-images.githubusercontent.com/6362174/138331737-c70b6561-fcb9-42f0-be03-f33cc7ca6f22.png">
 
 ### Code linting using SwiftLint
 Linting using `macOS` as host machine:
