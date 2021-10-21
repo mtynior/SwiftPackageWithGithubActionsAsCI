@@ -109,3 +109,50 @@ jobs:
           files: ./coverage_report.lcov
           verbose: true
 ```
+
+### Code linting using SwiftLint
+Linting using `macOS` as host machine:
+```yaml
+name: Lint code
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/codelint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
+
+jobs:
+  SwiftLint:
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Lint code using SwiftLint
+        run: swiftlint lint --reporter github-actions-logging
+```
+
+Linting using `ubuntu` as host machine with a [SwiftLint Github Action](https://github.com/marketplace/actions/github-action-for-swiftlint):
+```yaml
+name: Lint code
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/codelint.yml'
+      - '.swiftlint.yml'
+      - '**/*.swift'
+
+jobs:
+  SwiftLint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Lint code using SwiftLint
+        uses: norio-nomura/action-swiftlint@3.2.1
+```
+
+Both options lint the code, and add warning and errors as comments to the code:
+<img src="https://user-images.githubusercontent.com/6362174/138337201-7d3dde21-f888-4135-98e4-c212e2434e05.png">
+
