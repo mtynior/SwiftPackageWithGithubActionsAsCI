@@ -45,4 +45,15 @@ final class GACalcTests: XCTestCase {
         // then
         XCTAssertEqual(calc.currentValue, -5)
     }
+    
+    func testNegated() throws {
+        // given
+        var calc = GACalc(initialValue: 15)
+        
+        // when
+        calc.negate()
+        
+        // then
+        XCTAssertEqual(calc.currentValue, -15)
+    }
 }
