@@ -1,27 +1,31 @@
 public struct GACalc {
-    public private(set) var currentValue: Int
+    public private(set) var currentValue: Float
     
-    public init(initialValue: Int = 0) {
+    public init(initialValue: Float = 0) {
         currentValue = initialValue
     }
     
-    public mutating func add(_ value: Int) {
+    public mutating func add(_ value: Float) {
         currentValue += value
     }
     
-    public mutating func subtract(_ value: Int) {
+    public mutating func subtract(_ value: Float) {
         currentValue -= value
     }
     
-    public mutating func multiply(_ value: Int) {
+    public mutating func multiply(_ value: Float) {
         currentValue *= value
     }
     
-    public mutating func divide(_ value: Int) {
+    public mutating func divide(_ value: Float) {
         currentValue /=  value
     }
     
     public mutating func negate() {
         currentValue.negate()
+    }
+    
+    public mutating func percentage() {
+        currentValue *= 0.01
     }
 }
