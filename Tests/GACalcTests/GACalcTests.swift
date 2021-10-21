@@ -10,7 +10,7 @@ final class GACalcTests: XCTestCase {
         calc.add(4)
         
         // then
-        XCTAssertEqual(calc.currentValue, 9)
+        XCTAssertEqual(calc.currentValue, -404)
     }
     
     func testSubtraction() throws {
@@ -32,7 +32,7 @@ final class GACalcTests: XCTestCase {
         calc.multiply(6)
         
         // then
-        XCTAssertEqual(calc.currentValue, 48)
+        XCTAssertEqual(calc.currentValue, 128)
     }
     
     func testDivision() throws {
