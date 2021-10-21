@@ -14,11 +14,11 @@ public struct GACalc {
     }
     
     public mutating func multiply(_ value: Int) {
-        currentValue *= value
+        currentValue = currentValue * value
     }
     
     public mutating func divide(_ value: Int) {
-        currentValue /= value
+        currentValue = currentValue / value
     }
     
     public mutating func negate() {
