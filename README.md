@@ -1,5 +1,5 @@
 # GACalc
-A simple package to show how to setup and use GitHub Actions as a CI for Swift Packages
+This repo shows how to setup and use GitHub Actions as a CI for Swift Packages.
 
 <div align="center">
   <img src="https://img.shields.io/badge/language-Swift-orange" />
