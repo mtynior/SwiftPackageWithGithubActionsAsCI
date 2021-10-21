@@ -153,6 +153,6 @@ jobs:
         uses: norio-nomura/action-swiftlint@3.2.1
 ```
 
-Both options lint the code, and add warning and errors as comments to the code:
+Both options lint the code. If there are any warnings or errors they will be added, as comments, to the PR's code:
 <img src="https://user-images.githubusercontent.com/6362174/138337201-7d3dde21-f888-4135-98e4-c212e2434e05.png">
 
