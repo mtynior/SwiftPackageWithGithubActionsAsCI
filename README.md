@@ -33,7 +33,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: macos-11
 
     steps:
@@ -52,26 +52,37 @@ name: Test Package
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  build:
+  test:
     runs-on: macos-11
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: maxim-lobanov/setup-xcode@v1.4.0
-      with:
-        xcode-version: '13.1'
-        
-    - name: Build Package
-      run: swift build -v
+      - name: Get Sources
+        uses: actions/checkout@v2
+
+      - name: Build Package
+        run: swift build -v
+
+      - name: Run tests
+        run: swift test --enable-code-coverage -v
       
-    - name: Run tests
-      run: swift test --enable-code-coverage -v
-      
-    - name: Gather code coverage
-      run: xcrun llvm-cov export -format="lcov" .build/debug/{YOUR_PACKAGE_NAME}PackageTests.xctest/Contents/MacOS/{YOUR_PACKAGE_NAME}PackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1.4.0
+        with:
+          xcode-version: "13.1"
+
+      - name: Gather code coverage
+        run: xcrun llvm-cov export -format="lcov" .build/debug/GACalcPackageTests.xctest/Contents/MacOS/GACalcPackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          files: ./coverage_report.lcov
+          verbose: true
 ```
