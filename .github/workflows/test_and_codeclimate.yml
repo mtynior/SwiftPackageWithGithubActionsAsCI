@@ -31,4 +31,3 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TOKEN }}
         with:
           coverageCommand: xcrun llvm-cov export -format="lcov" .build/debug/GACalcPackageTests.xctest/Contents/MacOS/GACalcPackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
-          coverageLocations: ./coverage_report.lcov
