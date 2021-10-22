@@ -25,12 +25,10 @@ jobs:
         with:
           xcode-version: "13.1"
 
-      - name: Gather code coverage
-        run: xcrun llvm-cov export -format="lcov" .build/debug/GACalcPackageTests.xctest/Contents/MacOS/GACalcPackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
-      
-      - name: Uploade to Code Climate
+      - name: Get code coverage and upload to Code Climate
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TOKEN }}
         with:
+          coverageCommand: xcrun llvm-cov export -format="lcov" .build/debug/GACalcPackageTests.xctest/Contents/MacOS/GACalcPackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
           coverageLocations: coverage_report.lcov
