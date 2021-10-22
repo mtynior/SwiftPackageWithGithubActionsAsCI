@@ -30,7 +30,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TOKEN }}
         with:
-          coverageCommand: xcrun llvm-cov export -format="lcov" .build/debug/GACalcPackageTests.xctest/Contents/MacOS/GACalcPackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
+          coverageCommand: swift test --enable-code-coverage
           debug: true
           coverageLocations: |
-            ${{github.workspace}}/*.lcov:lcov
+            ${{github.workspace}}/.build/debug/codecov/*.json:json
