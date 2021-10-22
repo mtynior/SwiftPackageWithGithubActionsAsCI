@@ -1,4 +1,5 @@
-# GACalc
+# SwiftPackageWithGithubActionsAsCI
+
 This repo shows how to setup and use GitHub Actions as a CI for Swift Packages.
 
 <div align="center">
