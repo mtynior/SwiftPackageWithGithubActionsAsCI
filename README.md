@@ -10,6 +10,8 @@ This repo shows how to setup and use GitHub Actions as a CI for Swift Packages.
   <a href="https://codecov.io/gh/mtynior/GACalc">
     <img src="https://codecov.io/gh/mtynior/GACalc/branch/main/graph/badge.svg?token=U3YPVL4SR5"/>
   </a>
+  <a href="https://codeclimate.com/github/mtynior/SwiftPackageWithGithubActionsAsCI/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e4b9b71dbd5c2f0afefc/test_coverage" />
+  </a>
 </div>
 
 ## Available environments on GitHib
@@ -63,7 +65,7 @@ jobs:
       run: swift test -v
 ```
 
-### Test package & Gather Code Coverage using codecov.io
+### Test package, gather code coverage  & upload report to codecov.io
 Replace the `{YOUR_PACKAGE_NAME}` with the name of your package. For example if the name of the package is `gacalc`, then replace the fragment `{YOUR_PACKAGE_NAME}PackageTests` with `GacalcPackageTests`. 
 
 ```
@@ -115,6 +117,38 @@ jobs:
 When this action is executed for a pull request, the codevcov bot will add a comment with a new code coverage statistics:
 <img src="https://user-images.githubusercontent.com/6362174/138331737-c70b6561-fcb9-42f0-be03-f33cc7ca6f22.png">
 
+### Test package, gather code coverage & upload report to Code Climate
+```yaml
+name: Test Package
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: macos-11
+
+    steps:
+      - name: Get Sources
+        uses: actions/checkout@v2
+
+      - name: Build Package
+        run: swift build -v
+        
+      - name: Test & publish code coverage to Code Climate
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TOKEN }}
+        with:
+          coverageCommand: swift test --enable-code-coverage
+          debug: true
+          coverageLocations: |
+            ${{github.workspace}}/.build/debug/codecov/*.json:lcov-json
+```
+
 ### Code linting using SwiftLint
 Linting using `macOS` as host machine:
 ```yaml
@@ -160,4 +194,3 @@ jobs:
 
 Both options lint the code. If there are any warnings or errors they will be added, as comments, to the PR's code:
 <img src="https://user-images.githubusercontent.com/6362174/138337201-7d3dde21-f888-4135-98e4-c212e2434e05.png">
-
