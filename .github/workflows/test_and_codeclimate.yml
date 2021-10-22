@@ -27,19 +27,10 @@ jobs:
 
       - name: Gather code coverage
         run: xcrun llvm-cov export -format="lcov" .build/debug/GACalcPackageTests.xctest/Contents/MacOS/GACalcPackageTests -instr-profile .build/debug/codecov/default.profdata > coverage_report.lcov
-
-      - name: Setup NPM
-        uses: actions/setup-node@master
-        with:
-          node-version: '12'
-      - run: npm install -g yarn
-      - run: yarn install
-      - run: yarn build
       
       - name: Uploade to Code Climate
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TOKEN }}
         with:
-          coverageCommand: yarn coverage
           coverageLocations: coverage_report.lcov
