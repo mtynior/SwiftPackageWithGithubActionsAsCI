@@ -1,15 +1,15 @@
 # SwiftPackageWithGithubActionsAsCI
 
-This repo shows how to setup and use GitHub Actions as a CI for Swift Packages.
+This repo shows how to set up and use GitHub Actions as a CI for Swift Packages.
 
 <div align="center">
   <img src="https://img.shields.io/badge/language-Swift-orange" />
   <a href="https://github.com/mtynior/GACalc/actions/workflows/test_and_get_codecov.yml">
     <img src="https://github.com/mtynior/GACalc/actions/workflows/test_and_get_codecov.yml/badge.svg?branch=main"/>
   </a>
-  <a href="https://codecov.io/gh/mtynior/GACalc">
-    <img src="https://codecov.io/gh/mtynior/GACalc/branch/main/graph/badge.svg?token=U3YPVL4SR5"/>
-  </a>
+  <a href="https://codecov.io/gh/mtynior/SwiftPackageWithGithubActionsAsCI">
+    <img src="https://codecov.io/gh/mtynior/SwiftPackageWithGithubActionsAsCI/branch/main/graph/badge.svg?token=3RFLGUK1VW"/>
+  </a>  
   <a href="https://codeclimate.com/github/mtynior/SwiftPackageWithGithubActionsAsCI/test_coverage"><img src="https://api.codeclimate.com/v1/badges/e4b9b71dbd5c2f0afefc/test_coverage" />
   </a>
 </div>
