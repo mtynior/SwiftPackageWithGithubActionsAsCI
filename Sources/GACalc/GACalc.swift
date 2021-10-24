@@ -24,4 +24,8 @@ public struct GACalc {
     public mutating func negate() {
         currentValue.negate()
     }
+    
+    public mutating func percentage() {
+        currentValue *= 0.01
+    }
 }
