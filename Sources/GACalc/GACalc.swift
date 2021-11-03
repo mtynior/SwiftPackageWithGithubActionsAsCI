@@ -6,14 +6,14 @@ public struct GACalc {
     }
     
     public mutating func add(_ value: Float) {
-        currentValue += value
+        currentValue = currentValue + value
     }
     
     public mutating func subtract(_ value: Float) {
         currentValue -= value
     }
     
-    public mutating func multiply(_ value: Float) {
+    public mutating func multiply(_ value:Float) {
         currentValue *= value
     }
     
