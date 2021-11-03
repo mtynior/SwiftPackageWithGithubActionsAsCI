@@ -14,6 +14,8 @@ This repo shows how to set up and use GitHub Actions as a CI for Swift Packages.
   </a>
 </div>
 
+## This repository is a part of article published at [Brain Archives](https://thisdevbrain.com/swift-packages-and-github-actions/)
+
 ## Available environments on GitHib
 List of the all available environments and tools is [here](https://github.com/actions/virtual-environments/blob/main/images/macos/macos-11-Readme.md)
 
